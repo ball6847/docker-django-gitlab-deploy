@@ -124,7 +124,7 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'django.contrib.admin',
 	'south',
-	'apps.hello'
+	'project'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -162,6 +162,7 @@ LOGGING = {
 # Conditional loading environment
 try:
 	from .development import *
+	print "loaded development"
 except:
 	try:
 		from .production import *

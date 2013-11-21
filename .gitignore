@@ -17,3 +17,5 @@ Thumbs.db
 
 # local settings for each developers
 /settings/development.py
+/static/*
+~/static/index.html
