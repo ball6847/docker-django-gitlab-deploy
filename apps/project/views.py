@@ -20,7 +20,6 @@ def deploy(request, project_id):
 	"""
 	Deploy project to specific location
 	"""
-	
 	try:
 		project = Project.objects.get(pk=project_id)
 	except:
@@ -28,33 +27,27 @@ def deploy(request, project_id):
 
 	if not request.body:
 		return HttpResponse("Expected repository data");
-	
-	print request.body
-	
-	return HttpResponse("it should be ok");
 
 	path = Path(project.path)
 	params = json.loads(request.body)
-	repo = params.repository
-	
-	print params.repository
+	repo = params['repository']
 	
 	if path.isfile():
 		return HttpResponse("Expected deploy path to be a directory");
-	elif not path.isdir() and not path.mkdir(True):
-		return HttpResponse("Cannot create deploy directory for target key");
-
+	elif not path.isdir():
+		# path.mkdir(True) need exception
+		try:
+			path.mkdir(True)
+		except:
+			return HttpResponse("Cannot create target directory");
 	
-	print "OK, it works"
+	path.chdir()
 	
-	#path.chdir()
-	#
-	#if not path.child('.git').isdir():
-	#	shell_exec(['git', 'init'])
-	#	shell_exec(['git', 'remote', 'add', 'origin', repo.url])
-	#
-	#shell_exec(['git', 'clean', '-fdx'])
-	#shell_exec(['git', 'fetch', '-f', 'origin', 'master'])
-	#shell_exec(['git', 'reset', '--hard', 'FETCH_HEAD'])
+	if not path.child('.git').isdir():
+		print shell_exec(['git', 'init'])
+		print shell_exec(['git', 'remote', 'add', 'origin', repo['url']])
+	
+	# run in background
+	shell_exec(['/bin/sh', settings.PROJECT_ROOT.child('bin', 'working_copy_update.sh')], False)
 	
 	return HttpResponse("Message recieved");
