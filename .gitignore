@@ -1,0 +1,19 @@
+# ---------------------------------------------------------------
+# GLOBAL IGNORE (ide project files, OS junk and python itself)
+# ---------------------------------------------------------------
+
+*.komodoproject
+.komodotools
+*.pyc
+Thumbs.db
+
+# ---------------------------------------------------------------
+# APPLICATION ROOT IGNORE (application and user generated files)
+# ---------------------------------------------------------------
+
+# static files from apps,
+# you should run `python manage.py collectstatic`
+# to copy them all from python site-packages
+
+# local settings for each developers
+/settings/development.py
