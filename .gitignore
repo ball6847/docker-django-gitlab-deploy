@@ -10,6 +10,9 @@ Thumbs.db
 # ---------------------------------------------------------------
 # APPLICATION ROOT IGNORE (application and user generated files)
 # ---------------------------------------------------------------
+/.virtualenv
+/.env
+/.venv
 
 # static files from apps,
 # you should run `python manage.py collectstatic`
