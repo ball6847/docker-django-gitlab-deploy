@@ -3,4 +3,5 @@ django-annoying
 south
 MySQL-python
 Unipath
+setproctitle
 gunicorn
