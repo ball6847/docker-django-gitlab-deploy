@@ -7,7 +7,7 @@ TEMPLATE_DEBUG = DEBUG
 TIME_ZONE = 'Asia/Bangkok'
 
 # you need to change this on production environment
-ALLOWED_HOSTS = ['.ci.bizidea.co.th']
+ALLOWED_HOSTS = ['.gitlab-deploy.bizidea.co.th']
 
 DATABASES = {
 	'default': {
