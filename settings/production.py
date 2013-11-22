@@ -1,6 +1,7 @@
 from .base import PROJECT_ROOT
 
-DEBUG = True
+# change to True in development
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 TIME_ZONE = 'Asia/Bangkok'

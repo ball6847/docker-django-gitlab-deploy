@@ -1,6 +1,6 @@
 from unipath import Path
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -158,16 +158,19 @@ LOGGING = {
 	}
 }
 
-
 # Conditional loading environment
 try:
+	print "try loading settings/development.py"
 	from .development import *
-	print "loaded development"
+	print "settings/development.py loaded"
 except:
+	print "fallback to settings/production.py"
 	try:
 		from .production import *
+		print "settings/production.py loaded"
 	except:
-		pass
+		print "cannot load any environment!"
+		exit(1)
 
 
 # include apps path
