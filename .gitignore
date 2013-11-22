@@ -21,4 +21,4 @@ Thumbs.db
 !/static/index.html
 
 /db/*
-~/db/.gitkeep
+!/db/.gitkeep

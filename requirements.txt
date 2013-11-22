@@ -3,3 +3,4 @@ django-annoying
 south
 MySQL-python
 Unipath
+gunicorn
