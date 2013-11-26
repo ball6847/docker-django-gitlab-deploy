@@ -10,12 +10,7 @@ class Command(BaseCommand):
 				project = Project.objects.get(pk=project_id)
 			except:
 				continue
-			
-			uid = get_closest_uid(project.path)
-			
-			if uid == False:
-				continue
-			
+				
 			os.chdir(project.path)
 			
 			shell_exec(['git', 'fetch', '-f', 'origin', 'master'])
