@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from unipath import Path
-from .utils import shell_exec
-
+from .utils import shell_exec, su, get_closest_uid, get_name_from_uid
+import sys, os
 
 from models import Project
 
@@ -32,10 +32,14 @@ def deploy(request, project_id):
 	params = json.loads(request.body)
 	repo = params['repository']
 	
+	uid = get_closest_uid(path)
+	
+	os.setgid(uid)
+	os.seteuid(uid)
+	
 	if path.isfile():
 		return HttpResponse("Expected deploy path to be a directory");
 	elif not path.isdir():
-		# path.mkdir(True) need exception
 		try:
 			path.mkdir(True)
 		except:
@@ -48,6 +52,6 @@ def deploy(request, project_id):
 		print shell_exec(['git', 'remote', 'add', 'origin', repo['url']])
 	
 	# run in background
-	shell_exec(['/bin/sh', settings.PROJECT_ROOT.child('bin', 'working_copy_update.sh')], False)
+	shell_exec([sys.executable, settings.PROJECT_ROOT.child('manage.py'), 'updaterepo', project_id], False)
 	
 	return HttpResponse("Message recieved");
