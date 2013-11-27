@@ -15,7 +15,7 @@ fi
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$PWD:$PYTHONPATH
 
-SOCKFILE="$VIRTUAL_ENV/var/run/gunicorn.sock"
+SOCKFILE="/var/run/gitlab_deploy_server.sock"
 
 # Create the run directory if it doesn't exist
 RUNDIR="$(dirname $SOCKFILE)"
