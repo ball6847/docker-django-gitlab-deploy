@@ -10,8 +10,15 @@ class Command(BaseCommand):
 				project = Project.objects.get(pk=project_id)
 			except:
 				continue
-				
+			
+			uid = get_closest_uid(project.path)
+			
+			if uid == False:
+				continue
+			
+			user = get_name_from_uid(uid)
+			
 			os.chdir(project.path)
 			
-			shell_exec(['git', 'fetch', '-f', 'origin', 'master'])
-			shell_exec(['git', 'reset', '--hard', 'FETCH_HEAD'])
+			shell_exec(['su', user, '', 'git fetch -f origin master'])
+			shell_exec(['su', user, '', 'git reset --hard FETCH_HEAD'])

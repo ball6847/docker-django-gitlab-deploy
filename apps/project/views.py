@@ -33,9 +33,10 @@ def deploy(request, project_id):
 	repo = params['repository']
 	
 	uid = get_closest_uid(path)
+	user = get_name_from_uid(uid)
 	
-	os.setgid(uid)
-	os.seteuid(uid)
+	#os.setgid(uid)
+	#os.seteuid(uid)
 	
 	if path.isfile():
 		return HttpResponse("Expected deploy path to be a directory");
@@ -48,8 +49,8 @@ def deploy(request, project_id):
 	path.chdir()
 	
 	if not path.child('.git').isdir():
-		print shell_exec(['git', 'init'])
-		print shell_exec(['git', 'remote', 'add', 'origin', repo['url']])
+		print shell_exec(['su', user, '-c', 'git init'])
+		print shell_exec(['su', user, '-c', 'git remote add origin ' + repo['url']])
 	
 	# run in background
 	shell_exec([sys.executable, settings.PROJECT_ROOT.child('manage.py'), 'updaterepo', project_id], False)
