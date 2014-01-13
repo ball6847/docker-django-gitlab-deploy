@@ -124,6 +124,7 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'django.contrib.admin',
 	'south',
+	'django_email_test',
 	'project'
 )
 
@@ -176,6 +177,3 @@ except:
 # include apps path
 import sys
 sys.path.insert(0, str(PROJECT_ROOT.child('apps')))
-
-
-
