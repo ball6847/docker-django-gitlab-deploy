@@ -161,17 +161,9 @@ LOGGING = {
 
 # Conditional loading environment
 try:
-	print "try loading settings/development.py"
-	from settings.development import *
-	print "settings/development.py loaded"
+	from .development import *
 except:
-	print "fallback to settings/production.py"
-	try:
-		from settings.production import *
-		print "settings/production.py loaded"
-	except:
-		print "cannot load any environment!"
-		exit(1)
+	from .production import *
 
 
 # include apps path

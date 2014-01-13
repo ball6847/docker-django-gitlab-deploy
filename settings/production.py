@@ -1,4 +1,4 @@
-from .base import PROJECT_ROOT, ADMINS
+from .base import PROJECT_ROOT
 
 # change to True in development
 DEBUG = False
@@ -6,7 +6,7 @@ TEMPLATE_DEBUG = DEBUG
 
 TIME_ZONE = 'Asia/Bangkok'
 
-ADMIN += (
+ADMIN = (
     ('ball6847', 'porawit.p@bizidea.co.th'),
 )
 
