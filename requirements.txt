@@ -5,3 +5,4 @@ MySQL-python
 Unipath
 setproctitle
 gunicorn
+django-email-test
