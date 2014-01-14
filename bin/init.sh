@@ -6,7 +6,7 @@
 # update-rc.d gunicorn defaults in debian and ubuntu
 
 ### BEGIN INIT INFO
-# Provides:          gunicorn
+# Provides:          gitlab_deploy_server
 # Required-Start:    $all
 # Required-Stop:     $all
 # Default-Start:     2 3 4 5
