@@ -20,5 +20,5 @@ class Command(BaseCommand):
 			
 			os.chdir(project.path)
 			
-			print shell_exec(['su', user, '-c', 'git fetch -f origin master'])
-			print shell_exec(['su', user, '-c', 'git reset --hard FETCH_HEAD'])
+			shell_exec(['su', user, '-c', 'git fetch -f origin master'])
+			shell_exec(['su', user, '-c', 'git reset --hard FETCH_HEAD'])
