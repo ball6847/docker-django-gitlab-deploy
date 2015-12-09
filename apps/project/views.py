@@ -31,13 +31,13 @@ def deploy(request, project_id):
 	path = Path(project.path)
 	params = json.loads(request.body)
 	repo = params['repository']
-	
+
 	uid = get_closest_uid(path)
 	user = get_name_from_uid(uid)
-	
+
 	#os.setgid(uid)
 	#os.seteuid(uid)
-	
+
 	if path.isfile():
 		return HttpResponse("Expected deploy path to be a directory");
 	elif not path.isdir():
@@ -45,14 +45,14 @@ def deploy(request, project_id):
 			path.mkdir(True)
 		except:
 			return HttpResponse("Cannot create target directory");
-	
+
 	path.chdir()
-	
+
 	if not path.child('.git').isdir():
 		print shell_exec(['su', user, '-c', 'git init'])
-		print shell_exec(['su', user, '-c', 'git remote add origin ' + repo['url']])
-	
+		print shell_exec(['su', user, '-c', 'git remote add origin ' + repo['ssh_url']])
+
 	# run in background
 	shell_exec([sys.executable, settings.PROJECT_ROOT.child('manage.py'), 'updaterepo', project_id], False)
-	
+
 	return HttpResponse("Message recieved");
