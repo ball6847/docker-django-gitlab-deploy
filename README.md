@@ -31,13 +31,11 @@ python manage.py runserver 0.0.0.0:8000
 
 To run a production server using gunicorn use the following command
 
-Note
-- You might to use process manager like supervisord to create a daemon for the app
-- gunicorn won't serve static files, you need to setup webserver like nginx by yourself
-
-
 ```shell
 gunicorn --workers=2 wsgi
 ```
 
-You need to run application as root if you want to let the application manage ownershop of the created files
+Note
+- You might to use process manager like supervisord to create a daemon for the app
+- gunicorn won't serve static files, you need to setup webserver like nginx by yourself
+- You need to run application as root if you want to let the application manage ownershop of the created files
