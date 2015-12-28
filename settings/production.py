@@ -1,7 +1,7 @@
 from .base import PROJECT_ROOT
 
 # change to True in development
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 TIME_ZONE = 'Asia/Bangkok'
@@ -11,7 +11,7 @@ ADMIN = (
 )
 
 # you need to change this on production environment
-ALLOWED_HOSTS = ['.gitlab-deploy.bizidea.co.th']
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
 	'default': {
