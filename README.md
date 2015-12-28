@@ -39,3 +39,9 @@ Note
 - You might to use process manager like supervisord to create a daemon for the app
 - gunicorn won't serve static files, you need to setup webserver like nginx by yourself
 - You need to run application as root if you want to let the application manage ownershop of the created files
+
+If no want to test use curl to perform a request as follow
+
+```shell
+curl -X POST -d '{"repository": {"ssh_url": "git@git.bizidea.co.th:Bizidea/Wellman_addon.git"}}' "http://127.0.0.1:8000/project/1"
+```
