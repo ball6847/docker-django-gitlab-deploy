@@ -7,3 +7,6 @@ django-email-test==0.0.3
 gunicorn==18.0
 setproctitle==1.1.8
 wsgiref==0.1.2
+celery
+cffi
+pygit2==0.22.0

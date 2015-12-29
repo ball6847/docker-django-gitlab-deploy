@@ -3,9 +3,8 @@ from .models import Project
 from django.core.urlresolvers import reverse
 
 class ProjectAdmin(admin.ModelAdmin):
-	list_display = ('name', 'path', 'callback_url')
-	#list_filter = ('status',)
-	search_fields = ('name', 'path')
+	list_display = ('name', 'repo', 'path', 'callback_url')
+	search_fields = ('name', 'repo', 'path')
 
 	def callback_url(self, obj):
 		uri = reverse('project.deploy', args=[obj.pk])
