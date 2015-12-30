@@ -1,9 +1,7 @@
 Django==1.6.1
-MySQL-python==1.2.5
 South==0.8.4
 Unipath==1.0
 django-annoying==0.7.9
-django-email-test==0.0.3
 gunicorn==18.0
 setproctitle==1.1.8
 wsgiref==0.1.2
