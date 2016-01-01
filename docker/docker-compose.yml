@@ -11,6 +11,7 @@ django-pygit2:
     - "rabbitmq:rabbitmq"
     working_dir: /app
     entrypoint: "/bin/sh -c \"while true; do echo hello world; sleep 1; done\""
+    # entrypoint: "/app/docker/entrypoint.sh"
 postgresql:
   image: "sameersbn/postgresql:latest"
   container_name: "django-postgresql"

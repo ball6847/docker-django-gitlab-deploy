@@ -5,7 +5,10 @@ import os
 from apps.project.utils import get_closest_uid
 
 # setup Celery
-app = Celery('tasks', backend='amqp', broker='amqp://guest:guest@rabbitmq:5672//')
+app = Celery('tasks',
+    broker='amqp://guest:guest@rabbitmq:5672//',
+    backend='amqp'
+)
 app.conf.CELERY_TASK_SERIALIZER = 'json'
 app.conf.CELERY_ACCEPT_CONTENT = ['json']
 

@@ -5,11 +5,12 @@ from django.forms.models import model_to_dict
 from tasks import deploy
 
 class Project(models.Model):
-	name = models.CharField(max_length=255, blank=False)
-	repo = models.CharField(max_length=255,
-							blank=False,)
-	path = models.CharField(max_length=255,
-							blank=False,)
+	name = models.CharField(max_length=255, blank=False,
+                            help_text="Name of project (just for reminding purpose).")
+	repo = models.CharField(max_length=255, blank=False,
+                            help_text="SSH URL of the repository (eg. git@git.bizidea.co.th:Bizidea/bizidea-mailer.git)")
+	path = models.CharField(max_length=255, blank=False,
+                            help_text="Absolute path on server to clone repo into.")
 
 	def __unicode__(self):
 		return self.name
