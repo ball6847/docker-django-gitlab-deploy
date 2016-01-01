@@ -1,0 +1,5 @@
+django-pygit2:
+    image: alpine:edge
+    container_name: "django-pygit2"
+    working_dir: /root
+    entrypoint: "/bin/sh -c \"while true; do echo hello world; sleep 1; done\""
