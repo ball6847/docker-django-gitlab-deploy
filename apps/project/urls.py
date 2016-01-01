@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
+from .views import deploy
 
-urlpatterns = patterns('',
-	url("^([^/]+)/?$", 'project.views.deploy', name='project.deploy'),
-)
+urlpatterns = [
+	url("^([^/]+)/?$", deploy, name='project.deploy'),
+]
