@@ -1,6 +1,10 @@
 #!/bin/sh
 
+cd /app
+
 echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-apk update
-apk add python py-pip libgit2@testing
-pip install cffi 
+apk add --update gcc libffi-dev musl-dev python-dev py-pip libgit2-dev@testing
+
+# pygit2 need cffi at compile time, so we need to install it first
+pip install cffi
+pip install -r requirements.txt
