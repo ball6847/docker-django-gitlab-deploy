@@ -32,3 +32,12 @@ Thumbs.db
 /id_rsa.pub
 
 /application.log
+/docker/data/
+
+/repository/*
+!/repository/*
+
+/docker/data/postgresql/*
+!/docker/data/postgresql/.gitkeep
+/docker/data/rabbitmq/*
+!/docker/data/rabbitmq/.gitkeep

@@ -1,8 +1,9 @@
 Django==1.6.1
+psycopg2==2.6.1
 South==0.8.4
 Unipath==1.0
 django-annoying==0.7.9
 gunicorn==18.0
-celery
-cffi
-pygit2
+celery==3.1.19
+cffi==1.4.2
+pygit2==0.23.2
