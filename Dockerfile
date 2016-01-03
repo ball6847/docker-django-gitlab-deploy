@@ -1,7 +1,7 @@
 FROM alpine:edge
 MAINTAINER Porawit Poboonma <ball6847@gmail.com>
 
-ADD ../ /app
+ADD ./ /app
 RUN /app/docker/build.sh
 WORKDIR /app
 EXPOSE 8000
