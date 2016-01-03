@@ -3,7 +3,7 @@ from unipath import Path
 import pygit2 as git
 from settings.base import SSH_PRIVATE_KEY, SSH_PUBLIC_KEY, SSH_KEY_PASSPHRASE
 import os
-from apps.project.utils import get_closest_uid
+from apps.project.utils import get_closest_uid, shell_exec
 
 # setup Celery
 app = Celery('tasks',
@@ -56,6 +56,12 @@ def deploy(project):
             os._exit(0)
 
     os.waitpid(pid, 0)
+
+    compose = Path(path, 'docker-compose.yml')
+
+    if compose.isfile():
+        print(shell_exec(['docker-compose', '-f', compose, 'up', '-d']))
+
     print("Done.")
 
 def view_traceback():
