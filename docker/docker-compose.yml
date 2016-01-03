@@ -3,6 +3,7 @@ git-deploy:
   container_name: "git-deploy"
   volumes:
     - "./data/app:/app/settings/environment"
+    - "./data/repository:/repo"
   links:
   - "postgresql:postgresql"
   - "rabbitmq:rabbitmq"
