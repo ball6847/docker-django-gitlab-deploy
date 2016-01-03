@@ -1,6 +1,7 @@
 from celery import Celery
 from unipath import Path
 import pygit2 as git
+from settings.base import SSH_PRIVATE_KEY, SSH_PUBLIC_KEY, SSH_KEY_PASSPHRASE
 import os
 from apps.project.utils import get_closest_uid
 
@@ -12,16 +13,12 @@ app = Celery('tasks',
 app.conf.CELERY_TASK_SERIALIZER = 'json'
 app.conf.CELERY_ACCEPT_CONTENT = ['json']
 
-ssh_user = "git"
-private_key = "id_rsa"
-public_key = "id_rsa.pub"
-
 @app.task(ignore_result=True)
 def deploy(project):
     print("Starting project deployment")
 
     # ssh credentials
-    credential = git.Keypair("git", public_key, private_key, "")
+    credential = git.Keypair("git", SSH_PUBLIC_KEY, SSH_PRIVATE_KEY, SSH_KEY_PASSPHRASE)
     git.settings.search_path[git.GIT_CONFIG_LEVEL_GLOBAL] = '/var/lib/nobody'
     callback = git.RemoteCallbacks(credential)
 

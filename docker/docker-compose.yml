@@ -1,6 +1,6 @@
 django-pygit2:
     # image: alpine:edge
-    image: "ball6847/django-pygit:1"
+    image: "ball6847/django-pygit:2"
     container_name: "django-pygit2"
     ports:
       - "8000:8000"
@@ -10,8 +10,8 @@ django-pygit2:
     - "postgresql:postgresql"
     - "rabbitmq:rabbitmq"
     working_dir: /app
-    entrypoint: "/bin/sh -c \"while true; do echo hello world; sleep 1; done\""
-    # entrypoint: "/app/docker/entrypoint.sh"
+    # entrypoint: "/bin/sh -c \"while true; do sleep 1; done\""
+    entrypoint: "/app/docker/entrypoint.sh"
 postgresql:
   image: "sameersbn/postgresql:latest"
   container_name: "django-postgresql"

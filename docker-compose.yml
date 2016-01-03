@@ -2,4 +2,4 @@ rabbitmq:
     image: rabbitmq
     container_name: rabbitmq
     ports:
-        - "5672:5672"
+      - "5672:5672"
