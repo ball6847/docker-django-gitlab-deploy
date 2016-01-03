@@ -1,0 +1,30 @@
+django-pygit2:
+    # image: alpine:edge
+    image: "ball6847/django-pygit:2"
+    container_name: "django-pygit2"
+    ports:
+      - "8000:8000"
+    volumes:
+      - "../:/app"
+    links:
+    - "postgresql:postgresql"
+    - "rabbitmq:rabbitmq"
+    working_dir: /app
+    # entrypoint: "/bin/sh -c \"while true; do sleep 1; done\""
+    entrypoint: "/app/docker/entrypoint.sh"
+postgresql:
+  image: "sameersbn/postgresql:latest"
+  container_name: "django-postgresql"
+  # restart: always
+  volumes:
+    - "./data/postgresql:/var/lib/postgresql"
+  environment:
+    - "DB_USER=django"
+    - "DB_PASS=changethis123"
+    - "DB_NAME=django"
+rabbitmq:
+  image: "rabbitmq:latest"
+  container_name: "django-rabbimq"
+  # restart: always
+  volumes:
+    - "./data/rabbitmq:/var/lib/rabbitmq"

@@ -37,6 +37,8 @@ Thumbs.db
 /repository/*
 !/repository/.gitkeep
 
+/docker/data/app/*
+!/docker/data/app/.gitkeep
 /docker/data/postgresql/*
 !/docker/data/postgresql/.gitkeep
 /docker/data/rabbitmq/*
