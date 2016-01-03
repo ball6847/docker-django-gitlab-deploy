@@ -57,10 +57,10 @@ def deploy(project):
 
     os.waitpid(pid, 0)
 
-    compose = Path(path, 'docker-compose.yml')
-
-    if compose.isfile():
-        print(shell_exec(['docker-compose', '-f', compose, 'up', '-d']))
+    # compose = Path(path, 'docker-compose.yml')
+    #
+    # if compose.isfile():
+    #     print(shell_exec(['docker-compose', '-f', compose, 'up', '-d']))
 
     print("Done.")
 
