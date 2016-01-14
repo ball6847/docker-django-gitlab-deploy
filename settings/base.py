@@ -172,6 +172,10 @@ LOGGING = {
 
 AMQP_URI = 'amqp://guest:guest@rabbitmq:5672//'
 
+# notify result on slack channel
+SLACK_API_TOKEN = ''
+SLACK_CHANNEL = ''
+
 # Conditional loading environment
 try:
 	from .environment.config import *
