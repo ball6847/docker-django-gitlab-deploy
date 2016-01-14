@@ -48,4 +48,6 @@ Thumbs.db
 !/docker/data/rabbitmq/.gitkeep
 
 /settings/environment/*
-/settings/environment/.gitkeep
+!/settings/environment/.gitkeep
+
+/gunicorn.conf.py

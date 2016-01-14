@@ -1,0 +1,7 @@
+bind = "127.0.0.1:8598"
+backlog = 2048
+workers = 1
+daemon = False
+proc_name = "deploy.sv1.bizidea.co.th"
+django_settings = "settings"
+

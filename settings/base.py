@@ -5,7 +5,7 @@ import mimetypes
 mimetypes.add_type("image/svg+xml", ".svg", True)
 mimetypes.add_type("image/svg+xml", ".svgz", True)
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
 	# ('Your Name', 'your_email@example.com'),
@@ -169,6 +169,8 @@ LOGGING = {
 		},
 	}
 }
+
+AMQP_URI = 'amqp://guest:guest@rabbitmq:5672//'
 
 # Conditional loading environment
 try:

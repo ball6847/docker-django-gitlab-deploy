@@ -1,13 +1,13 @@
 from celery import Celery
 from unipath import Path
 import pygit2 as git
-from settings.base import SSH_PRIVATE_KEY, SSH_PUBLIC_KEY, SSH_KEY_PASSPHRASE
+from settings.base import SSH_PRIVATE_KEY, SSH_PUBLIC_KEY, SSH_KEY_PASSPHRASE, AMQP_URI
 import os
 from apps.project.utils import get_closest_uid, shell_exec
 
 # setup Celery
 app = Celery('tasks',
-    broker='amqp://guest:guest@rabbitmq:5672//',
+    broker=AMQP_URI,
     backend='amqp'
 )
 app.conf.CELERY_TASK_SERIALIZER = 'json'
