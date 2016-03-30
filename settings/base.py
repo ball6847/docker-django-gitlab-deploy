@@ -5,7 +5,7 @@ import mimetypes
 mimetypes.add_type("image/svg+xml", ".svg", True)
 mimetypes.add_type("image/svg+xml", ".svgz", True)
 
-DEBUG = False
+DEBUG = True
 
 ADMINS = (
 	# ('Your Name', 'your_email@example.com'),
