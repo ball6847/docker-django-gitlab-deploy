@@ -1,0 +1,7 @@
+git-deploy:
+    image: "ball6847/django-gitlab-deploy"
+    container_name: "git-deploy"
+    volumes:
+        - "./data/app:/app/settings/environment"
+        - "./data/repository:/repo"
+        - "./data/db:/app/db"
