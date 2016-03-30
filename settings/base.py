@@ -13,17 +13,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': os.environ.get('POSTGRESQL_ENV_DB_NAME'),
-		'USER': os.environ.get('POSTGRESQL_ENV_DB_USER'),
-		'PASSWORD': os.environ.get('POSTGRESQL_ENV_DB_PASS'),
-		'HOST': 'postgresql',
-		'PORT': '5432'
-	}
-}
-
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -101,6 +90,13 @@ MIDDLEWARE_CLASSES = (
 	# 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': PROJECT_ROOT.child('db', 'database.sqlite')
+	}
+}
+
 ROOT_URLCONF = 'settings.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -136,6 +132,7 @@ INSTALLED_APPS = (
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.admin',
+    'kombu.transport.django',
 	'project'
 )
 
@@ -170,7 +167,7 @@ LOGGING = {
 	}
 }
 
-AMQP_URI = 'amqp://guest:guest@rabbitmq:5672//'
+AMQP_URI = 'django://'
 
 # notify result on slack channel
 SLACK_API_TOKEN = ''

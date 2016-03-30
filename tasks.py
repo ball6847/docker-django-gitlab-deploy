@@ -8,8 +8,7 @@ from slacker import Slacker
 
 # setup Celery
 app = Celery('tasks',
-    broker=AMQP_URI,
-    backend='amqp'
+    broker=AMQP_URI
 )
 app.conf.CELERY_TASK_SERIALIZER = 'json'
 app.conf.CELERY_ACCEPT_CONTENT = ['json']

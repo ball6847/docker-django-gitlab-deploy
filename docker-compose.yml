@@ -1,23 +1,7 @@
 git-deploy:
-  build: .
-  container_name: "git-deploy"
-  volumes:
-    - "./data/app:/app/settings/environment"
-    - "./data/repository:/repo"
-  links:
-  - "postgresql:postgresql"
-  - "rabbitmq:rabbitmq"
-postgresql:
-  image: "sameersbn/postgresql:latest"
-  container_name: "git-deploy-postgresql"
-  volumes:
-    - "./data/postgresql:/var/lib/postgresql"
-  environment:
-    - "DB_USER=django"
-    - "DB_PASS=changethis123"
-    - "DB_NAME=django"
-rabbitmq:
-  image: "rabbitmq:latest"
-  container_name: "git-deploy-rabbimq"
-  volumes:
-    - "./data/rabbitmq:/var/lib/rabbitmq"
+    build: .
+    container_name: "git-deploy"
+    volumes:
+        - "./data/app:/app/settings/environment"
+        - "./data/repository:/repo"
+        - "./data/db:/app/db"
