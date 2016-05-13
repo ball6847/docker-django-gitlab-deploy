@@ -26,6 +26,11 @@ def deploy(project):
     callback = git.RemoteCallbacks(credential)
 
     path = Path(project['path'])
+    branch = None
+
+    if project['branch'] :
+        branch = project['branch']
+
     uid = get_closest_uid(path)
     pid = os.fork()
 
@@ -41,7 +46,7 @@ def deploy(project):
                 return
 
             if not path.isdir():
-                repo = git.clone_repository(project['repo'], path, bare=False, callbacks=callback)
+                repo = git.clone_repository(project['repo'], path, bare=False, checkout_branch=branch, callbacks=callback)
                 print("Cloned %s into %s" % (project['repo'], path))
             else:
                 repo = git.Repository(os.path.join(path, '.git'))

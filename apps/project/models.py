@@ -9,6 +9,8 @@ class Project(models.Model):
                             help_text="Name of project (just for reminding purpose).")
 	repo = models.CharField(max_length=255, blank=False,
                             help_text="SSH URL of the repository (eg. git@git.bizidea.co.th:Bizidea/bizidea-mailer.git)")
+    branch = models.CharField(max_length=255, blank=False, default="master"
+                            help_text="Source branch to pull from (default is master)")
 	path = models.CharField(max_length=255, blank=False,
                             help_text="Absolute path on server to clone repo into.")
 
